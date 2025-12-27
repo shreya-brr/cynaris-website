@@ -1,0 +1,32 @@
+{
+    "kind": "collectionType",
+    "collectionName": "job_postings",
+    "info": {
+        "singularName": "job-posting",
+        "pluralName": "job-postings",
+        "displayName": "Job Posting",
+        "description": "Job openings"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "department": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "description": {
+            "type": "blocks"
+        },
+        "applyLink": {
+            "type": "string"
+        }
+    }
+}
