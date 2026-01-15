@@ -1,36 +1,20 @@
-export function getStrapiURL(path = "") {
-    return `${
-        process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
-    }${path}`;
-}
+const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-export async function fetchAPI(
-    path: string,
-    urlParamsObject: Record<string, any> = {},
-    options = {}
-) {
-    // Merge default and user options
-    const mergedOptions = {
-        headers: {
-            "Content-Type": "application/json",
-        },
-        ...options,
-    };
+export async function fetchAPI(endpoint: string) {
+  if (!API_URL) {
+    throw new Error("NEXT_PUBLIC_STRAPI_URL is undefined");
+  }
 
-    // Build request URL
-    const queryString = new URLSearchParams(urlParamsObject).toString();
-    const requestUrl = `${getStrapiURL(
-        `/api${path}${queryString ? `?${queryString}` : ""}`
-    )}`;
+  const res = await fetch(`${API_URL}${endpoint}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
 
-    // Trigger API call
-    const response = await fetch(requestUrl, mergedOptions);
+  if (!res.ok) {
+    throw new Error(`Fetch failed: ${res.status}`);
+  }
 
-    // Handle response
-    if (!response.ok) {
-        console.error(response.statusText);
-        throw new Error(`An error occured please try again`);
-    }
-    const data = await response.json();
-    return data;
+  return res.json();
 }

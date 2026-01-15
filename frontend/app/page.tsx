@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
     ArrowRight,
@@ -13,6 +14,17 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+    const [services, setServices] = useState<any[]>([]);
+useEffect(() => {
+  fetch("http://localhost:1337/api/services")
+    .then((res) => res.json())
+    .then((json) => {
+      console.log("Strapi services:", json);
+      setServices(json.data || []);
+    })
+    .catch((err) => console.error("Strapi error:", err));
+}, []);
+
     const features = [
         {
             icon: Code,
