@@ -1,5 +1,5 @@
 "use client";
-
+import { fetchAPI } from "@/lib/api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -15,15 +15,29 @@ import {
 
 export default function Home() {
     const [services, setServices] = useState<any[]>([]);
-useEffect(() => {
-  fetch("http://localhost:1337/api/services")
-    .then((res) => res.json())
-    .then((json) => {
-      console.log("Strapi services:", json);
-      setServices(json.data || []);
-    })
-    .catch((err) => console.error("Strapi error:", err));
-}, []);
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {services.map((svc: any) => {
+    const Icon = null; // keep icon logic from Strapi if available
+    const { attributes } = svc;
+    return (
+      <motion.div
+        key={svc.id}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: svc.id * 0.1 }}
+        className="relative p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all"
+      >
+        <h4 className="text-xl font-bold text-gray-900 mb-3">
+          {attributes.title}
+        </h4>
+        <p className="text-gray-600 leading-relaxed">
+          {attributes.description}
+        </p>
+      </motion.div>
+    );
+  })}
+</div>
+
 
     const features = [
         {

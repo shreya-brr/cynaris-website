@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "job"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Full time",
+        "part time",
+        "contract",
+        "internship"
+      ]
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "publishedat": {
+      "type": "date"
+    }
+  }
+}

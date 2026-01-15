@@ -1,20 +1,43 @@
-const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+const API_URL = "http://localhost:1337/api";
 
-export async function fetchAPI(endpoint: string) {
-  if (!API_URL) {
-    throw new Error("NEXT_PUBLIC_STRAPI_URL is undefined");
-  }
-
-  const res = await fetch(`${API_URL}${endpoint}`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
+/* ================= SERVICES ================= */
+export async function fetchServices() {
+  const res = await fetch(`${API_URL}/services?populate=*`, {
     cache: "no-store",
   });
 
   if (!res.ok) {
-    throw new Error(`Fetch failed: ${res.status}`);
+    throw new Error("Failed to fetch services");
   }
 
-  return res.json();
+  const json = await res.json();
+  return json.data;
+}
+
+/* ================= PROJECTS ================= */
+export async function fetchProjects() {
+  const res = await fetch(`${API_URL}/projects?populate=*`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch projects");
+  }
+
+  const json = await res.json();
+  return json.data;
+}
+
+/* ================= JOBS / CAREERS ================= */
+export async function fetchJobs() {
+  const res = await fetch("http://localhost:1337/api/jobs?populate=*", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch jobs");
+  }
+
+  const json = await res.json();
+  return json.data;
 }
