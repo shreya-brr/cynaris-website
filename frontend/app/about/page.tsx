@@ -1,185 +1,125 @@
-"use client";
+import React from 'react';
+import { Target, Eye, ShieldCheck, Users, Globe, Zap, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
-import { motion } from "framer-motion";
+const stats = [
+  { label: "Projects Delivered", value: "150+" },
+  { label: "Global Clients", value: "40+" },
+  { label: "Team Experts", value: "25+" },
+  { label: "Years Experience", value: "8+" },
+];
+
+const values = [
+  {
+    title: "Innovation First",
+    desc: "We don't just follow trends; we create digital solutions that set new industry standards.",
+    icon: <Zap className="text-blue-500" size={32} />
+  },
+  {
+    title: "Client-Centric",
+    desc: "Your business goals are the compass for every line of code we write and every pixel we place.",
+    icon: <Users className="text-blue-500" size={32} />
+  },
+  {
+    title: "Trust & Security",
+    desc: "We prioritize data integrity and transparent communication in every partnership.",
+    icon: <ShieldCheck className="text-blue-500" size={32} />
+  }
+];
 
 export default function AboutPage() {
-  const stats = [
-    { value: "50+", label: "Satisfied Customers" },
-    { value: "400+", label: "Interns Trained" },
-    { value: "200+", label: "Projects Completed" },
-    { value: "200+", label: "Skilled Professionals" },
-  ];
-
   return (
     <main className="bg-white">
-      {/* ================= HERO ================= */}
-      <section className="max-w-7xl mx-auto px-6 pt-24 pb-16">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-extrabold text-gray-900 mb-6"
-        >
-          About Us
-        </motion.h1>
-
-        <div className="h-1 w-20 bg-blue-600 mb-6" />
-
-        <p className="text-gray-600 max-w-4xl leading-relaxed">
-         At Cynaris Solutions, we are more than just a software development company-we are your strategic partners in innovation. Our deep commitment to excellence and passion for technology drive us to deliver tailored solutions that empower businesses to thrive in the digital age.
-Founded in 2018, Cynaris Solutions has rapidly established itself as a leader in the software development industry. With executives bringing over two decades of experience, we leverage a wealth of knowledge and expertise to ensure that every project we undertake is a success. Our focus is not just on developing software but on crafting innovative solutions that align with your business goals and drive long-term growth.
-We are proud to hold ISO 9001:2015, ISO 27001, and ISO 22301 certifications, which underscore our commitment to maintaining the highest standards of quality, security, and business continuity. These certifications reflect our dedication to delivering exceptional results while safeguarding your business and ensuring operational resilience.
-
-    
-        </p>
-        <p className="text-gray-700 font-medium max-w-5xl">
-          At Cynaris Solutions, we don’t just build software — we build the
-          future of your business.
-        </p>
-      </section>
-
-      {/* ================= MISSION & VISION ================= */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-            <p className="text-gray-600 leading-relaxed">
-              To Co-Create, Co-Craft, Co-Execute, and Co-Deliver world-class
-              software solutions that drive innovation, efficiency, and growth
-              through collaboration.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-4">Our Vision</h2>
-            <p className="text-gray-600 leading-relaxed">
-              To revolutionize industries through innovative software solutions
-              that enhance agility, assurance, and resiliency in business
-              operations.
+      {/* Hero Section */}
+      <section className="relative py-24 bg-gray-900 text-white overflow-hidden">
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[120px] opacity-20"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight text-left">
+              Co-Creating the <span className="text-blue-400">Digital Future.</span>
+            </h1>
+            <p className="text-xl text-gray-300 leading-relaxed mb-8 text-left">
+              At Cynaris Solutions, we transform complex business challenges into seamless digital experiences through innovation, strategy, and technical excellence.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ================= STATS ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((item, i) => (
-            <div key={i}>
-              <p className="text-3xl font-extrabold text-blue-600">
-                {item.value}
-              </p>
-              <p className="text-gray-600 text-sm mt-2">{item.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ================= WHY CHOOSE US ================= */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
-          {/* Video */}
-          <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-lg">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/AnQQa8td6tg"
-              title="Cynaris Solutions Company Intro"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-
-          {/* Content */}
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Choose Us
-            </h2>
-            <div className="h-1 w-16 bg-blue-600 mb-6" />
-
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              Cynaris Solutions is your trusted partner in innovation. Our 4C
-              Principle — Co-Create, Co-Craft, Co-Execute, and Co-Deliver —
-              guides everything we do.
-            </p>
-
-            <div className="grid sm:grid-cols-2 gap-5">
-              {[
-                "Tailored Solutions",
-                "Client-Centric Approach",
-                "Dedicated Support & Continuous Improvement",
-                "Expertise in Cutting-Edge Technology",
-                "Results-Driven Methodologies",
-                "Industry-Leading Certification",
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="group flex items-center gap-3 rounded-xl border border-gray-200 bg-white px-5 py-4 text-gray-700 shadow-sm transition-all duration-300 cursor-pointer hover:bg-blue-600 hover:text-white hover:shadow-lg"
-                >
-                  <span className="text-lg font-semibold transition group-hover:translate-x-1">
-                    »
-                  </span>
-                  <span className="font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= HOW WE MAKE WORK SUCCESSFUL ================= */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            How We Make Work Successful
-          </h2>
-
-          <p className="max-w-3xl text-gray-600 leading-relaxed mb-16">
-            Our 4C Principle — Co-Create, Co-Craft, Co-Execute, and Co-Deliver —
-            is deeply embedded in everything we do.
-          </p>
-
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
-            {[
-              ["1", "Co-Create", "We collaborate closely to understand your goals and vision."],
-              ["2", "Co-Craft", "We design intuitive, high-quality solutions with precision."],
-              ["3", "Co-Execute", "We seamlessly integrate solutions into your operations."],
-              ["4", "Co-Deliver", "We ensure long-term value, adaptability, and growth."],
-            ].map(([num, title, desc]) => (
-              <div key={num}>
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="w-10 h-10 rounded-full border border-gray-400 flex items-center justify-center font-semibold">
-                    {num}
-                  </span>
-                  <h3 className="text-xl font-semibold">{title}</h3>
-                </div>
-                <p className="text-gray-600 leading-relaxed">{desc}</p>
+      {/* Stats Section */}
+      <section className="py-12 bg-blue-600">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-4xl font-black text-white mb-1">{stat.value}</div>
+                <div className="text-blue-100 text-sm font-medium uppercase tracking-wider">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= PARTNERS + CTA ================= */}
-      <section className="bg-white py-20">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our Partners
-          </h2>
+      {/* Mission & Vision */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="bg-gray-50 p-10 rounded-3xl border border-gray-100">
+              <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
+                <Target className="text-white" size={28} />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-left">Our Mission</h2>
+              <p className="text-gray-600 leading-relaxed text-lg text-left">
+                To empower businesses globally by delivering high-impact digital products. We leverage the 4C Principle—Co-Create, Craft, Execute, and Deliver—to ensure every solution drives measurable growth.
+              </p>
+            </div>
+            <div className="bg-gray-50 p-10 rounded-3xl border border-gray-100">
+              <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
+                <Eye className="text-white" size={28} />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-left">Our Vision</h2>
+              <p className="text-gray-600 leading-relaxed text-lg text-left">
+                To be the world's most trusted partner for digital transformation, recognized for our ability to blend creative artistry with robust engineering.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed mb-14">
-            We collaborate with esteemed partners across the USA, South Africa,
-            the Middle East, and India to deliver exceptional solutions
-            worldwide.
-          </p>
+      {/* Values Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-left max-w-2xl mb-16">
+            <h2 className="text-4xl font-black text-gray-900 mb-4">Core Values</h2>
+            <p className="text-gray-600">The principles that guide our work and our relationships.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {values.map((value, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="mb-6">{value.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">{value.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-left">{value.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div className="mt-10 flex justify-center">
-            <a
-              href="/contact"
-              className="inline-block rounded-full bg-blue-600 px-8 py-3 text-white font-medium transition hover:bg-blue-700"
-            >
-              Get A Quote
-            </a>
+      {/* CTA Section - Career Focused */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="bg-blue-900 rounded-[40px] p-12 md:p-20 relative overflow-hidden text-center">
+            <div className="relative z-10">
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Build the future with us.</h2>
+              <p className="text-blue-100 text-lg mb-10 max-w-xl mx-auto">
+                We're always looking for talented individuals to join our global team and work on high-impact projects.
+              </p>
+              <Link 
+                href="/careers" 
+                className="inline-flex items-center gap-2 bg-white text-blue-900 px-10 py-5 rounded-2xl font-bold hover:bg-blue-50 transition-all shadow-xl hover:scale-[1.02] active:scale-95"
+              >
+                Join Our Team <ArrowRight size={20} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
